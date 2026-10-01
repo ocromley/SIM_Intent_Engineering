@@ -319,18 +319,50 @@
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.15);
         }
-        .foundation-note {
-            max-width: 760px;
-            margin: 1.25rem auto 0;
-            color: rgba(255,255,255,0.8);
-            font-size: 0.88rem;
-            line-height: 1.6;
+        .foundation-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(11, 17, 27, 0.72);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 1.5rem;
         }
-        .foundation-note h2 {
-            color: var(--gold);
+        .foundation-modal.open {
+            display: flex;
+        }
+        .foundation-modal-card {
+            position: relative;
+            max-width: 720px;
+            width: min(100%, 720px);
+            background: var(--white);
+            color: var(--navy);
+            border-radius: 18px;
+            padding: 2rem 2rem 1.5rem;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+        }
+        .foundation-modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            border: none;
+            background: transparent;
+            font-size: 1.8rem;
+            line-height: 1;
+            color: var(--gray);
+            cursor: pointer;
+        }
+        .foundation-modal-card h2 {
+            color: var(--navy);
             font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            margin-bottom: 0.35rem;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        .foundation-modal-card p {
+            color: var(--navy);
+            line-height: 1.8;
+            font-size: 1rem;
         }
         .topics-list {
             list-style: none;
@@ -411,6 +443,9 @@
             font-family: 'Playfair Display', serif;
             color: var(--navy);
             margin-bottom: 0.25rem;
+        }
+        .panelist-card h4 a {
+            color: var(--navy);
         }
         .panelist-card p {
             color: var(--gray);
@@ -888,13 +923,9 @@
                     </div>
                 </a>
                 <div class="hero-cta-row">
-                    <button type="button" class="hero-cta primary" disabled>The SIM Foundation</button>
+                    <button type="button" class="hero-cta primary" id="foundation-button">The SIM Foundation</button>
                     <a href="https://www.sim-chicago.org/page/Membership" class="hero-cta" target="_blank" rel="noopener noreferrer">SIM Membership</a>
                 </div>
-                <section class="foundation-note" aria-labelledby="foundation-title">
-                    <h2 id="foundation-title">SIM Foundation</h2>
-                    <p>Thank you for your support of the SIM Foundation! The SIM Foundation is a 501(c)(3) tax-exempt non-profit, EIN 20-4516332. SIM and its Chapters seek to give back to their local communities by supporting programs that contribute to the vitality and continuation of the Information Technology profession.</p>
-                </section>
             </div>
         </div>
 
@@ -988,13 +1019,11 @@
             <div class="panelist-grid">
                 <div class="panelist-card">
                     <img class="panelist-photo" src="../Dav_Kent.jpg" alt="David Kent headshot">
-                    <h4>David Kent</h4>
-                    <p>Panelist</p>
+                    <h4><a href="https://www.linkedin.com/in/dkent/" target="_blank" rel="noopener noreferrer" style="color: var(--navy); text-decoration: none; color: var(--navy);">David Kent</a></h4>
                 </div>
                 <div class="panelist-card">
                     <img class="panelist-photo" src="../Jeff_Corderio_Headshot.jpeg" alt="Jeff Cordeiro headshot">
-                    <h4>Jeff Cordeiro</h4>
-                    <p>Panelist</p>
+                    <h4><a href="https://www.linkedin.com/in/jeffersonmcordeiro/" target="_blank" rel="noopener noreferrer" style="color: var(--navy); text-decoration: none; color: var(--navy);">Jeff Cordeiro</a></h4>
                 </div>
             </div>
 
@@ -1346,6 +1375,14 @@
         <p style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.7;">Society for Information Management - Chicago Chapter</p>
     </footer>
 
+    <div class="foundation-modal" id="foundation-modal" aria-hidden="true">
+        <div class="foundation-modal-card" role="dialog" aria-modal="true" aria-labelledby="foundation-modal-title">
+            <button type="button" class="foundation-modal-close" aria-label="Close SIM Foundation information">&times;</button>
+            <h2 id="foundation-modal-title">SIM Foundation</h2>
+            <p>Thank you for your support of the SIM Foundation! The SIM Foundation is a 501(c)(3) tax-exempt non-profit, EIN 20-4516332. SIM and its Chapters seek to give back to their local communities by supporting programs that contribute to the vitality and continuation of the Information Technology profession.</p>
+        </div>
+    </div>
+
     <script>
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(page => {
@@ -1360,6 +1397,29 @@
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
             window.scrollTo({ top: 0, behavior: 'auto' });
+        }
+
+        const foundationButton = document.getElementById('foundation-button');
+        const foundationModal = document.getElementById('foundation-modal');
+        const foundationClose = foundationModal ? foundationModal.querySelector('.foundation-modal-close') : null;
+
+        if (foundationButton && foundationModal && foundationClose) {
+            foundationButton.addEventListener('click', () => {
+                foundationModal.classList.add('open');
+                foundationModal.setAttribute('aria-hidden', 'false');
+            });
+
+            foundationClose.addEventListener('click', () => {
+                foundationModal.classList.remove('open');
+                foundationModal.setAttribute('aria-hidden', 'true');
+            });
+
+            foundationModal.addEventListener('click', (event) => {
+                if (event.target === foundationModal) {
+                    foundationModal.classList.remove('open');
+                    foundationModal.setAttribute('aria-hidden', 'true');
+                }
+            });
         }
     </script>
 </body>
