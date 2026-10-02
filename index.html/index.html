@@ -319,22 +319,50 @@
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.15);
         }
+        .donation-feature {
+            display: grid;
+            grid-template-columns: minmax(0, 1.7fr) minmax(220px, 0.8fr);
+            gap: 1rem;
+            max-width: 900px;
+            margin: 1.5rem auto 0;
+            align-items: stretch;
+        }
+        .donation-tribute,
+        .donation-qr-block {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 16px;
+        }
+        .donation-tribute {
+            padding: 1.25rem 1.5rem;
+            color: rgba(255,255,255,0.85);
+            text-align: left;
+            line-height: 1.55;
+            font-size: 0.9rem;
+        }
+        .donation-tribute h3 {
+            color: var(--gold);
+            font-size: 1rem;
+            margin: 0 0 0.75rem;
+        }
+        .donation-tribute p {
+            margin: 0 0 0.65rem;
+        }
+        .donation-tribute p:last-child {
+            margin-bottom: 0;
+        }
         .donation-qr-block {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 1rem;
-            max-width: 520px;
-            margin: 1.5rem auto 0;
+            flex-wrap: wrap;
             padding: 1rem 1.25rem;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 16px;
             text-align: left;
         }
         .donation-qr-block img {
-            width: 92px;
-            height: 92px;
+            width: 140px;
+            height: 140px;
             object-fit: contain;
             background: var(--white);
             border-radius: 12px;
@@ -476,7 +504,12 @@
             margin-bottom: 0.25rem;
         }
         .panelist-card h4 a {
-            color: var(--navy);
+            color: var(--sim-blue) !important;
+            text-decoration: underline !important;
+            text-underline-offset: 3px;
+        }
+        .panelist-card h4 a:hover {
+            color: #0d5fa7;
         }
         .panelist-card p {
             color: var(--gray);
@@ -897,6 +930,8 @@
             .sponsors-grid { gap: 2rem; }
             .rating-scale { justify-content: center; }
             .connect-grid { grid-template-columns: 1fr; }
+            .donation-feature { grid-template-columns: 1fr; }
+            .donation-qr-block { min-height: 160px; }
         }
     </style>
     <base target="_blank">
@@ -956,11 +991,20 @@
                     <button type="button" class="hero-cta primary" id="foundation-button">The SIM Foundation</button>
                     <a href="https://www.sim-chicago.org/page/Membership" class="hero-cta" target="_blank" rel="noopener noreferrer">SIM Membership</a>
                 </div>
-                <div class="donation-qr-block">
-                    <img src="../Chicago_F-n_ QR.png" alt="SIM Chicago Foundation QR code">
-                    <div class="donation-qr-copy">
-                        <div>Scan to donate</div>
-                        <a href="https://checkout.square.site/merchant/N72HVXQDSBPS6/checkout/J7XG4CZT6RAK3U3VH2O3SUMW?src=webqr" target="_blank" rel="noopener noreferrer">SIM Chicago Foundation</a>
+                <div class="donation-feature">
+                    <section class="donation-tribute" aria-labelledby="tandy-tribute-title">
+                        <h3 id="tandy-tribute-title">Honor Tandy Green. Support the Next Generation of Technology Leaders.</h3>
+                        <p>SIM Chicago is naming its next scholarship award in honor of Tandy Green, a valued member of the Lenovo team and a dedicated supporter of SIM Chicago and technology.</p>
+                        <p>To honor Tandy’s legacy, SIM Chicago will match donations made in her memory dollar for dollar, up to $5,000, supporting scholarships for technology students.</p>
+                        <p><strong>Double your impact.</strong> Scan the QR code to donate through the SIM Chicago Foundation in honor of Tandy Green.</p>
+                        <p>Thank you for helping carry Tandy’s legacy forward.</p>
+                    </section>
+                    <div class="donation-qr-block">
+                        <img src="../Chicago_F-n_ QR.png" alt="SIM Chicago Foundation QR code">
+                        <div class="donation-qr-copy">
+                            <div>Scan to donate</div>
+                            <a href="https://checkout.square.site/merchant/N72HVXQDSBPS6/checkout/J7XG4CZT6RAK3U3VH2O3SUMW?src=webqr" target="_blank" rel="noopener noreferrer">SIM Chicago Foundation</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1056,11 +1100,11 @@
             <div class="panelist-grid">
                 <div class="panelist-card">
                     <img class="panelist-photo" src="../Dav_Kent.jpg" alt="David Kent headshot">
-                    <h4><a href="https://www.linkedin.com/in/dkent/" target="_blank" rel="noopener noreferrer" style="color: var(--navy); text-decoration: none; color: var(--navy);">David Kent</a></h4>
+                    <h4><a href="https://www.linkedin.com/in/dkent/" target="_blank" rel="noopener noreferrer" style="color: var(--sim-blue); text-decoration: underline; text-underline-offset: 3px;">David Kent</a></h4>
                 </div>
                 <div class="panelist-card">
                     <img class="panelist-photo" src="../Jeff_Corderio_Headshot.jpeg" alt="Jeff Cordeiro headshot">
-                    <h4><a href="https://www.linkedin.com/in/jeffersonmcordeiro/" target="_blank" rel="noopener noreferrer" style="color: var(--navy); text-decoration: none; color: var(--navy);">Jeff Cordeiro</a></h4>
+                    <h4><a href="https://www.linkedin.com/in/jeffersonmcordeiro/" target="_blank" rel="noopener noreferrer" style="color: var(--sim-blue); text-decoration: underline; text-underline-offset: 3px;">Jeff Cordeiro</a></h4>
                 </div>
             </div>
 
