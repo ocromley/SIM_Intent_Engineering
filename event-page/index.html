@@ -319,6 +319,37 @@
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.15);
         }
+        .donation-qr-block {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            max-width: 520px;
+            margin: 1.5rem auto 0;
+            padding: 1rem 1.25rem;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 16px;
+            text-align: left;
+        }
+        .donation-qr-block img {
+            width: 92px;
+            height: 92px;
+            object-fit: contain;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 0.4rem;
+        }
+        .donation-qr-copy {
+            color: rgba(255,255,255,0.85);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .donation-qr-copy a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+        }
         .foundation-modal {
             position: fixed;
             inset: 0;
@@ -925,6 +956,13 @@
                 <div class="hero-cta-row">
                     <button type="button" class="hero-cta primary" id="foundation-button">The SIM Foundation</button>
                     <a href="https://www.sim-chicago.org/page/Membership" class="hero-cta" target="_blank" rel="noopener noreferrer">SIM Membership</a>
+                </div>
+                <div class="donation-qr-block">
+                    <img src="../Chicago_F-n_ QR.png" alt="SIM Chicago Foundation QR code">
+                    <div class="donation-qr-copy">
+                        <div>Scan to donate</div>
+                        <a href="https://checkout.square.site/merchant/N72HVXQDSBPS6/checkout/J7XG4CZT6RAK3U3VH2O3SUMW?src=webqr" target="_blank" rel="noopener noreferrer">SIM Chicago Foundation</a>
+                    </div>
                 </div>
             </div>
         </div>
